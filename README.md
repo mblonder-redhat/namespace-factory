@@ -3,6 +3,7 @@
 This repository implements a "Namespace Factory" that provisions namespaces and baseline controls using ArgoCD dynamically.
 
 ## The Folder Structure
+```
 .
 ├── bootstrap
 │   ├── project.yaml
@@ -17,6 +18,7 @@ This repository implements a "Namespace Factory" that provisions namespaces and 
 ├── tenants
 │   └── team-a.yaml            
 └── README.md
+```
 
 ## Architectural Decisions
 
