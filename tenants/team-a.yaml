@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tenant-team-a-dev
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mblonder-redhat/namespace-factory.git
+    targetRevision: HEAD
+    path: charts/namespace-bundle
+    helm:
+      values: |
+        namespace: team-a-dev
+        owner: team-a
+        environment: dev
+        quota:
+          cpuRequests: '4'
+          cpuLimits: '8'
+          memoryRequests: 8Gi
+          memoryLimits: 16Gi
+        limits:
+          defaultCpu: 500m
+          defaultMemory: 512Mi
+          defaultRequestCpu: 200m
+          defaultRequestMemory: 256Mi
+        rbac:
+          adminGroup: team-a-admins
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: team-a-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: {{ .Values.namespace }}-quota
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  hard:
+    requests.cpu: {{ .Values.quota.cpuRequests }}
+    limits.cpu: {{ .Values.quota.cpuLimits }}
+    requests.memory: {{ .Values.quota.memoryRequests }}
+    limits.memory: {{ .Values.quota.memoryLimits }}

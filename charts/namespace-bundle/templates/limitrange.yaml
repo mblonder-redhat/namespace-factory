@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: {{ .Values.namespace }}-limits
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  limits:
+  - default:
+      cpu: {{ .Values.limits.defaultCpu }}
+      memory: {{ .Values.limits.defaultMemory }}
+    defaultRequest:
+      cpu: {{ .Values.limits.defaultRequestCpu }}
+      memory: {{ .Values.limits.defaultRequestMemory }}
+    type: Container
