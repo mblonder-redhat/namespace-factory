@@ -38,9 +38,9 @@ The user only needs to provide a simple key-value file defining their requiremen
 
 ### Sequence Enforcement
 In order to enforce the order of the resources creation in a logical order, I've used ArgoCD Sync Waves.
-Wave 0: The namespace is the first resource to be created, since all other resources must reside in an existing namespace.
-Wave 1: ResourceQuotas and LimitRanges
-Wave 2: RoleBindings
+1. Wave 0: The namespace is the first resource to be created, since all other resources must reside in an existing namespace.
+2. Wave 1: ResourceQuotas and LimitRanges
+3. Wave 2: RoleBindings
 
 ## Prerequisites
 1. Minikube 
