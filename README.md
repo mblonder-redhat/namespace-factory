@@ -37,7 +37,7 @@ By using a Helm chart there is not need to deal with the Kubernetes logic.
 The user only needs to provide a simple key-value file defining their requirements for each new team they want to add. This makes the system simple and maintainable without needing to handle the Kubernetes in the background.
 
 ### Sequence Enforcement
-In order to enforce the order of the resources creation in a logical order, I've used ArgoCD Sync Waves.
+In order to enforce the order of the resources creation in a logical order, I've used ArgoCD Sync Waves:
 1. Wave 0: The namespace is the first resource to be created, since all other resources must reside in an existing namespace.
 2. Wave 1: ResourceQuotas and LimitRanges
 3. Wave 2: RoleBindings
