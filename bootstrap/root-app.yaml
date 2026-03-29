@@ -4,15 +4,16 @@ metadata:
   name: namespace-factory
   namespace: argocd
 spec:
+  goTemplate: true
   generators:
     - git:
         repoURL: https://github.com/mblonder-redhat/namespace-factory.git
         revision: HEAD
         files:
-          - path: "tenants/team-a.yaml"
+          - path: "tenants/*.yaml"
   template:
     metadata:
-      name: '{{namespace}}'
+      name: '{{ .namespace }}'
     spec:
       project: namespace-factory
       source:
@@ -21,10 +22,10 @@ spec:
         path: namespace-factory
         helm:
           valueFiles:
-            - "../{{path}}" 
+            - "../tenants/{{ .path.filename }}"
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{namespace}}'
+        namespace: '{{ .namespace }}'
       syncPolicy:
         automated:
           prune: true
