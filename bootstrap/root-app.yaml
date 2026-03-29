@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/mblonder-redhat/namespace-factory.git
         revision: HEAD
         files:
-          - path: "tenants/*.yaml"
+          - path: "tenants/team-a.yaml"
   template:
     metadata:
       name: '{{namespace}}'
