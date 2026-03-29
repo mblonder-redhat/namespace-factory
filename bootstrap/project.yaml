@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: namespace-factory
+  namespace: argocd
+spec:
+  destinations:
+  - namespace: '*'
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  namespaceResourceWhitelist:
+  - group: ''
+    kind: ResourceQuota
+  - group: ''
+    kind: LimitRange
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+  sourceRepos:
+  - https://github.com/mblonder-redhat/namespace-factory.git

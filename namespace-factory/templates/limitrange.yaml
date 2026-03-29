@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.namespace }}-limits
   namespace: {{ .Values.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   limits:
   - default:

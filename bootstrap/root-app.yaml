@@ -1,20 +1,33 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: namespace-factory
   namespace: argocd
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/mblonder-redhat/namespace-factory.git
-    targetRevision: HEAD
-    path: tenants/
-    directory:
-      recurse: true
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: argocd
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  generators:
+    - git:
+        repoURL: https://github.com/mblonder-redhat/namespace-factory.git
+        revision: main
+        files:
+          - path: "tenants/*.yaml"
+  template:
+    metadata:
+      name: '{{namespace}}'
+    spec:
+      project: namespace-factory
+      source:
+        repoURL: https://github.com/mblonder-redhat/namespace-factory.git
+        targetRevision: main
+        path: namespace-factory
+        helm:
+          valueFiles:
+            - "../{{path}}" 
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=false
