@@ -7,7 +7,7 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/mblonder-redhat/namespace-factory.git
-        revision: main
+        revision: HEAD
         files:
           - path: "tenants/*.yaml"
   template:
@@ -17,7 +17,7 @@ spec:
       project: namespace-factory
       source:
         repoURL: https://github.com/mblonder-redhat/namespace-factory.git
-        targetRevision: main
+        targetRevision: HEAD
         path: namespace-factory
         helm:
           valueFiles:
