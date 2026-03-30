@@ -5,18 +5,19 @@ This repository implements a "Namespace Factory" that provisions namespaces and 
 ## The Folder Structure
 ```
 .
-├── bootstrap
+├── bootstrap/
 │   ├── project.yaml
 │   └── root-app.yaml
-├── namespace-factory
+├── namespace-factory/
 │   ├── Chart.yaml
-│   └── templates
+│   ├── values.yaml
+│   └── templates/
 │       ├── namespace.yaml
 │       ├── quota.yaml
 │       ├── limitrange.yaml
 │       └── rbac.yaml
-├── tenants
-│   └── team-a.yaml            
+├── tenants/
+│   └── team-a.yaml
 └── README.md
 ```
 
