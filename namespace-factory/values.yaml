@@ -1,0 +1,19 @@
+namespace: ""
+owner: ""
+environment: dev
+
+quota:
+  cpuRequests: "2"
+  cpuLimits: "4"
+  memoryRequests: 4Gi
+  memoryLimits: 8Gi
+
+limits:
+  defaultCpu: 500m
+  defaultMemory: 512Mi
+  defaultRequestCpu: 200m
+  defaultRequestMemory: 256Mi
+
+rbac:
+  adminGroup: ""
+  viewGroup: ""
