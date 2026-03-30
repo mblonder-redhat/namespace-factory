@@ -32,3 +32,5 @@ spec:
           selfHeal: true
         syncOptions:
           - CreateNamespace=false
+  syncPolicy:
+    preserveResourcesOnDeletion: true
