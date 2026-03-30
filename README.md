@@ -53,6 +53,7 @@ I've provided a short script in order to get the system up and running.
 ```
 #!/bin/bash
 git clone https://github.com/mblonder-redhat/namespace-factory.git
+cd namespace-factory/
 
 minikube start --driver=<podman/docker>
 
